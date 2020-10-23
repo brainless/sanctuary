@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 
-import { Button, Post } from "components/UIHelpers";
+import { Button } from "components/UIHelpers";
+import Post from "components/Post";
 
 const sampleContent = `
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
@@ -19,15 +20,44 @@ const sampleTitles = [
   "My peers make me feel I am an outsider, I want to quit",
 ];
 
+const sampleTags = [
+  "venting-out",
+  "life-story",
+  "seeking-help",
+  "thank-you",
+  "depression",
+];
+
+function shuffle(array) {
+  var currentIndex = array.length,
+    temporaryValue,
+    randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
 export default ({}) => {
   return (
     <Fragment>
-      {sampleTitles.map((title) => (
-        <div className="container mx-auto my-2 max-w-xl">
-          <Post inContainer={false} title={title}>
-            {sampleContent}
-          </Post>
-        </div>
+      {sampleTitles.map((title, i) => (
+        <Post
+          key={`wall-post-${i}`}
+          title={title}
+          content={sampleContent}
+          hashTags={shuffle([...sampleTags])}
+        />
       ))}
 
       <div className="container mt-4 mx-auto max-w-lg flex justify-center">

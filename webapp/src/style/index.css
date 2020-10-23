@@ -637,7 +637,7 @@ h2 {
 
 h3 {
   display: block;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.25rem;
   line-height: 1.75rem;
   --text-opacity: 1;
@@ -649,7 +649,7 @@ h3 {
 
 h4 {
   display: block;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.125rem;
   line-height: 1.75rem;
   --text-opacity: 1;

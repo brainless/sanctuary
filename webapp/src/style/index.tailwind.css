@@ -25,11 +25,11 @@ body {
   }
 
   h3 {
-    @apply block font-bold text-xl leading-7 text-gray-800 pt-2 pb-1;
+    @apply block font-semibold text-xl leading-7 text-gray-800 pt-2 pb-1;
   }
 
   h4 {
-    @apply block font-bold text-lg leading-7 text-gray-800 pt-2 pb-1;
+    @apply block font-semibold text-lg leading-7 text-gray-800 pt-2 pb-1;
   }
 
   p {

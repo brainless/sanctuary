@@ -6,10 +6,33 @@ export const Heading = ({ x = "3", children }) => {
   return React.createElement(`h${x}`, {}, children);
 };
 
-export const Post = ({ title, inContainer = true, isMarkdown, children }) => {
+export const Post = ({
+  title,
+  titleLink = null,
+  inBox = true,
+  headingSize = "2",
+  inContainer = true,
+  isMarkdown,
+  children,
+}) => {
+  const boxClasses = "bg-white border rounded-md p-2";
+
+  const Title = () => (
+    <Fragment>
+      {titleLink && title ? (
+        <Heading x={headingSize}>
+          <Link>{title}</Link>
+        </Heading>
+      ) : null}
+      {!!title && titleLink === null ? (
+        <Heading x={headingSize}>{title}</Heading>
+      ) : null}
+    </Fragment>
+  );
+
   const Inner = () => (
-    <div className="bg-white border rounded-md p-2">
-      {!!title ? <Heading x="2">{title}</Heading> : null}
+    <div className={inBox ? boxClasses : ""}>
+      <Title />
       {isMarkdown ? (
         <ReactMarkdown>{children}</ReactMarkdown>
       ) : (
@@ -86,5 +109,23 @@ export const Button = ({
         {children}
       </Link>
     );
+  }
+};
+
+export const HashTag = ({ id, label, slug, isLink = false }) => {
+  const commonClasses =
+    "inline-block text-green-700 text-sm font-thin bg-gray-200 px-2 rounded shadow-sm mx-1";
+
+  if (isLink) {
+    return (
+      <Link
+        to={`/tag/${id}/${slug}`}
+        className={`${commonClasses} hover:bg-gray-600 hover:text-white`}
+      >
+        #{label}
+      </Link>
+    );
+  } else {
+    return <span className={commonClasses}>#{label}</span>;
   }
 };
