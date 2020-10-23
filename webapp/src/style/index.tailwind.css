@@ -14,3 +14,33 @@ body {
   color: #333333;
   background-color: #f7fafc;
 }
+
+@layer components {
+  h1 {
+    @apply font-semibold text-4xl leading-7 text-gray-700 pt-3 pb-2;
+  }
+
+  h2 {
+    @apply font-semibold text-2xl leading-7 text-gray-700 pt-3 pb-2;
+  }
+
+  h3 {
+    @apply block font-bold text-xl leading-7 text-gray-800 pt-2 pb-1;
+  }
+
+  h4 {
+    @apply block font-bold text-lg leading-7 text-gray-800 pt-2 pb-1;
+  }
+
+  p {
+    @apply py-2;
+  }
+
+  a {
+    @apply text-blue-600 font-semibold;
+  }
+
+  ul {
+    @apply list-disc pl-5;
+  }
+}
