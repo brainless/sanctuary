@@ -19,17 +19,29 @@ body {
   h1 {
     @apply font-semibold text-4xl leading-7 text-gray-700 pt-3 pb-2;
   }
+  h1 a.h-link {
+    @apply font-semibold text-blue-700;
+  }
 
   h2 {
     @apply font-semibold text-2xl leading-7 text-gray-700 pt-3 pb-2;
+  }
+  h2 a.h-link {
+    @apply font-semibold text-blue-700;
   }
 
   h3 {
     @apply block font-semibold text-xl leading-7 text-gray-800 pt-2 pb-1;
   }
+  h3 a.h-link {
+    @apply font-semibold text-blue-800;
+  }
 
   h4 {
     @apply block font-semibold text-lg leading-7 text-gray-800 pt-2 pb-1;
+  }
+  h4 a.h-link {
+    @apply font-semibold text-blue-800;
   }
 
   p {

@@ -5,6 +5,7 @@ import Navbar from "components/Navbar";
 import Home from "screens/Home";
 import About from "screens/About";
 import Wall from "screens/Wall";
+import Post from "screens/Post";
 
 function App() {
   return (
@@ -22,7 +23,9 @@ function App() {
             <Wall />
           </Route>
 
-          <Route path="/post/"></Route>
+          <Route path="/post/">
+            <Post />
+          </Route>
 
           <Route path="/">
             <Home />

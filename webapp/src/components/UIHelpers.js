@@ -21,7 +21,9 @@ export const Post = ({
     <Fragment>
       {titleLink && title ? (
         <Heading x={headingSize}>
-          <Link>{title}</Link>
+          <Link to={titleLink} className="h-link">
+            {title}
+          </Link>
         </Heading>
       ) : null}
       {!!title && titleLink === null ? (
@@ -56,7 +58,7 @@ export const Button = ({
   label,
   element = "button",
   size = "md",
-  theme = "primary",
+  theme = "support",
   disabled = false,
   padding = "px-2",
   margin = "mx-1",
@@ -66,12 +68,10 @@ export const Button = ({
 }) => {
   let themeClasses = "",
     sizeClasses = "";
-  if (theme === "action") {
-    themeClasses =
-      "bg-blue-300 text-gray-800 hover:bg-blue-700 hover:text-white";
+  if (theme === "support") {
+    themeClasses = "bg-purple-700 text-white hover:bg-purple-800";
   } else if (theme === "happy") {
-    themeClasses =
-      "bg-green-400 text-gray-700 hover:bg-green-700 hover:text-white";
+    themeClasses = "bg-green-700 text-white hover:bg-green-800";
   } else if (theme === "simple") {
     themeClasses =
       "bg-gray-300" +
@@ -83,7 +83,7 @@ export const Button = ({
   }
 
   if (size === "lg") {
-    sizeClasses = "text-lx leading-8";
+    sizeClasses = "text-xl leading-10";
   } else if (size === "sm") {
     sizeClasses = "text-xs leading-5";
   } else {
@@ -91,7 +91,7 @@ export const Button = ({
   }
 
   const classes =
-    "inline-block shadow focus:outline-none" +
+    "inline-block shadow-lg focus:outline-none hover:shadow-xs" +
     (disabled ? " " : " hover:shadow-none ") +
     `${rounded} ${padding} ${margin} ${themeClasses} ${sizeClasses}`;
 

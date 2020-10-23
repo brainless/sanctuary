@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
 import { Button } from "components/UIHelpers";
-import Post from "components/Post";
+import { PostInListView } from "components/Post";
 
 const sampleContent = `
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
@@ -28,7 +28,7 @@ const sampleTags = [
   "depression",
 ];
 
-function shuffle(array) {
+const shuffle = (array) => {
   var currentIndex = array.length,
     temporaryValue,
     randomIndex;
@@ -46,14 +46,15 @@ function shuffle(array) {
   }
 
   return array;
-}
+};
 
 export default ({}) => {
   return (
     <Fragment>
       {sampleTitles.map((title, i) => (
-        <Post
+        <PostInListView
           key={`wall-post-${i}`}
+          id={i + 1}
           title={title}
           content={sampleContent}
           hashTags={shuffle([...sampleTags])}
