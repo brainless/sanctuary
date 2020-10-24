@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+@import "../../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css";
+@import "../../node_modules/@fortawesome/fontawesome-free/css/solid.css";
+@import "../../node_modules/@fortawesome/fontawesome-free/css/regular.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  color: #333333;
+  background-color: #f7fafc;
+}
+
+@layer components {
+  h1 {
+    @apply font-semibold text-4xl leading-7 text-gray-700 pt-3 pb-2;
+  }
+  h1 a.h-link {
+    @apply font-semibold text-blue-700;
+  }
+
+  h2 {
+    @apply font-semibold text-2xl leading-7 text-gray-700 pt-3 pb-2;
+  }
+  h2 a.h-link {
+    @apply font-semibold text-blue-700;
+  }
+
+  h3 {
+    @apply block font-semibold text-xl leading-7 text-gray-800 pt-2 pb-1;
+  }
+  h3 a.h-link {
+    @apply font-semibold text-blue-800;
+  }
+
+  h4 {
+    @apply block font-semibold text-lg leading-7 text-gray-800 pt-2 pb-1;
+  }
+  h4 a.h-link {
+    @apply font-semibold text-blue-800;
+  }
+
+  p {
+    @apply py-2;
+  }
+
+  a {
+    @apply text-blue-600 font-semibold;
+  }
+
+  ul {
+    @apply list-disc pl-5;
+  }
+}
