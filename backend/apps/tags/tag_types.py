@@ -1,0 +1,25 @@
+from enum import Enum
+
+
+class TagTypeChoices(Enum):
+    anxiety = "anxiety"
+    body_image = "body-image"
+    depression = "depression"
+    eating = "eating"
+    family = "family"
+    personal = "personal"
+    workplace = "workplace"
+    grief = "grief"
+    lgbtqp = "lgbtq+"
+    mood_swings = "mood-swings"
+    race = "race"
+    relationships = "relationships"
+    stress = "stress"
+    substance_abuse = "substance-abuse"
+    abuse = "abuse"
+    ocd = "ocd"
+    illness = "illness"
+    failure = "failure"
+    finance = "finance"
+    child_abuse = "child-abuse"
+    bipolar = "bipolar"
