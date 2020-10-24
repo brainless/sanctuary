@@ -11,7 +11,6 @@ users = Table(
 
     Column("id", Integer, primary_key=True),
     Column("email", String(length=100), nullable=False),
-    Column("animal_name", String(length=40), nullable=False),
 
     Column("created_at", DateTime, nullable=False, default=datetime.utcnow()),
 )
