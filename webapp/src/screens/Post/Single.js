@@ -30,6 +30,7 @@ const ReplyList = ({}) => {
           key={`post-${postId}-re-${i}`}
           id={reply.id}
           content={reply.content}
+          likesCount={reply.likes_count}
           createdAt={reply.created_at}
         />
       ))}

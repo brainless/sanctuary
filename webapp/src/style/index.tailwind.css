@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Merriweather&display=swap");
 @import "../../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css";
 @import "../../node_modules/@fortawesome/fontawesome-free/css/solid.css";
 @import "../../node_modules/@fortawesome/fontawesome-free/css/regular.css";
@@ -17,24 +17,30 @@ body {
 
 @layer components {
   h1 {
-    @apply font-semibold text-4xl leading-7 text-gray-700 pt-3 pb-2;
+    @apply text-3xl leading-9 text-gray-700 pt-3 pb-2;
+    font-family: "Merriweather", serif;
   }
   h1 a.h-link {
-    @apply font-semibold text-blue-700;
+    @apply text-blue-700;
+    font-family: "Merriweather", serif;
   }
 
   h2 {
-    @apply font-semibold text-2xl leading-7 text-gray-700 pt-3 pb-2;
+    @apply text-2xl leading-7 text-gray-700 pt-3 pb-2;
+    font-family: "Merriweather", serif;
   }
   h2 a.h-link {
-    @apply font-semibold text-blue-700;
+    @apply font-normal text-blue-700;
+    font-family: "Merriweather", serif;
   }
 
   h3 {
-    @apply block font-semibold text-xl leading-7 text-gray-800 pt-2 pb-1;
+    @apply block text-xl leading-7 text-gray-800 pt-2 pb-1;
+    font-family: "Merriweather", serif;
   }
   h3 a.h-link {
-    @apply font-semibold text-blue-800;
+    @apply font-normal text-blue-800;
+    font-family: "Merriweather", serif;
   }
 
   h4 {

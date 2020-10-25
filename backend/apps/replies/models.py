@@ -27,6 +27,6 @@ replies = Table(
 
     # For gif and voice, the content will be URLs to the saved media
     Column("content", Text, nullable=False),
-
+    Column("likes_count", Integer, nullable=True),
     Column("created_at", DateTime, nullable=False, default=datetime.utcnow()),
 )

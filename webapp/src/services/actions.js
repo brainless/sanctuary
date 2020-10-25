@@ -19,3 +19,13 @@ export const replyToPost = async (payload) => {
     data: payload,
   });
 };
+
+export const likeReply = async (payload) => {
+  const url = "/api/replies/add-like/";
+
+  await axios({
+    method: "POST",
+    url,
+    data: payload,
+  });
+};
