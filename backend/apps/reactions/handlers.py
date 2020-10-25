@@ -8,7 +8,7 @@ from .schema import ReactionIn, Reaction
 reactions_router = APIRouter()
 
 
-@reactions_router.get("/list-for/{post_id}", response_model=Reaction)
+@reactions_router.get("/list-for-post/{post_id}", response_model=Reaction)
 async def list_reactions(post_id: int):
     """
     Get the combined Reaction(s) count for a given Post
@@ -21,7 +21,7 @@ async def list_reactions(post_id: int):
     return await database.fetch_one(query=query)
 
 
-@reactions_router.post("/reply-to", response_model=Reaction)
+@reactions_router.post("/add-to-post", response_model=Reaction)
 async def create_reaction(reaction: ReactionIn):
     query = reactions.select().where(
         reactions.c.post_id == reaction.post_id
@@ -39,9 +39,8 @@ async def create_reaction(reaction: ReactionIn):
         post_id=reaction.post_id,
         reactions_json=reactions_json
     )
-    last_record_id = await database.execute(query=query)
+    await database.execute(query=query)
     return {
         **reaction.dict(),
-        "id": last_record_id,
         "reactions_json": reactions_json
     }

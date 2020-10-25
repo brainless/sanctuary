@@ -10,6 +10,5 @@ class ReactionIn(BaseModel):
 
 
 class Reaction(BaseModel):
-    id: int
     post_id: int
     reactions_json: Dict
