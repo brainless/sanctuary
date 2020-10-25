@@ -10,7 +10,7 @@ from .schema import ReplyIn, Reply
 replies_router = APIRouter()
 
 
-@replies_router.get("/list-for-post/{post_id}", response_model=List[Reply])
+@replies_router.get("/list-for-post/{post_id}/", response_model=List[Reply])
 async def list_replies(post_id: int):
     """
     List Reply(ies) for a given Post
@@ -23,7 +23,7 @@ async def list_replies(post_id: int):
     return await database.fetch_all(query=query)
 
 
-@replies_router.post("/add-to-post", response_model=Reply)
+@replies_router.post("/add-to-post/", response_model=Reply)
 async def create_reply(reply: ReplyIn):
     created_at = datetime.utcnow()
 

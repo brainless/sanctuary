@@ -9,3 +9,13 @@ export const createPost = async (payload) => {
     data: payload,
   });
 };
+
+export const replyToPost = async (payload) => {
+  const url = "/api/replies/add-to-post/";
+
+  await axios({
+    method: "POST",
+    url,
+    data: payload,
+  });
+};

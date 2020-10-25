@@ -37,15 +37,20 @@ export const PostInListView = ({ id, title, content, hashTags }) => {
 export const PostSingleView = ({ id, title, content, hashTags }) => {
   return (
     <Fragment>
-      <div className="container mx-auto my-2 px-3 py-1 max-w-xl">
+      <div className="container mx-auto mt-2 px-3 py-1 max-w-xl bg-white">
         <div className="text-xs mt-2">Posted 20 hours ago</div>
 
         <Post inBox={false} headingSize="2" inContainer={false} title={title} />
       </div>
 
-      <div className="container mx-auto my-2 px-3 py-3 max-w-xl bg-white border rounded-md">
+      <div className="container mx-auto my-2 px-3 py-3 max-w-xl bg-white rounded-md">
         <Post inBox={false} inContainer={false}>
-          {content}
+          <Fragment>
+            {content &&
+              content
+                .split("\n")
+                .map((x, i) => <p key={`post-${id}-p-${i}`}>{x}</p>)}
+          </Fragment>
         </Post>
 
         {hashTags && hashTags.length ? (

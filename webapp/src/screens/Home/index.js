@@ -3,13 +3,13 @@ import React, { Fragment } from "react";
 import { Button, Post } from "components/UIHelpers";
 
 const homePageIntroContent = `
-# sanctuary
+# veda
 
 A sacred and safe place for people who are in mentally stressful situations - living with psychological conditions like anxiety, depression, paranoia, stress disorder, attention issues or any other.
 
 
-## Rules of sanctuary
-Simple rules guide the sanctuary:
+## Rules of veda
+Simple rules guide the veda:
 
  - Share only what you are going through, not what you feel about someone else
  - Reply to someone's post only if you have something positive or supportive, anything else will be flagged and removed
@@ -19,7 +19,7 @@ Simple rules guide the sanctuary:
  - Professional counselors may join and help, only if they declare themselves as such
  - Rules guiding the system, except the ones about anonymity, can be decided by the community
 
-All software behind Sanctuary will be open source, [maintained on GitHub](https://github.com/brainless/sanctuary). Infrastructure will be run by donations from hosting companies. Sanctuary will be completely free to join and use.
+All software behind Veda will be open source, [maintained on GitHub](https://github.com/brainless/veda). Infrastructure will be run by donations from hosting companies. Veda will be completely free to join and use.
 `;
 
 export default ({}) => {
@@ -27,15 +27,15 @@ export default ({}) => {
     <Fragment>
       <Post>
         <Fragment>
-          <h1>sanctuary</h1>
+          <h1>Veda</h1>
           <p>
             A sacred and safe place for people who are in mentally stressful
             situations - living with psychological conditions like anxiety,
             depression, paranoia, stress disorder, attention issues or any
             other.
           </p>
-          <h2 id="rules-of-sanctuary">Rules of sanctuary</h2>
-          <p>Simple rules guide the sanctuary:</p>
+          <h2 id="rules-of-veda">Rules of Veda</h2>
+          <p>Simple rules guide the veda:</p>
           <ul>
             <li>
               Share only what you are going through, not what you feel about
@@ -67,12 +67,12 @@ export default ({}) => {
             </li>
           </ul>
           <p>
-            All software behind Sanctuary will be open source,{" "}
+            All software behind Veda is open source, and{" "}
             <a href="https://github.com/brainless/sanctuary">
               maintained on GitHub
             </a>
-            . Infrastructure will be run by donations from hosting companies.
-            Sanctuary will be completely free to join and use.
+            . Infrastructure is run by donations. Veda is completely free to
+            join and use.
           </p>
         </Fragment>
       </Post>
