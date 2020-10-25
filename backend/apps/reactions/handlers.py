@@ -1,30 +1,17 @@
 from fastapi import APIRouter
 
 from utils.database import database
-from .models import reactions
+from apps.posts.models import posts
 from .schema import ReactionIn, Reaction
 
 
 reactions_router = APIRouter()
 
 
-@reactions_router.get("/list-for-post/{post_id}", response_model=Reaction)
-async def list_reactions(post_id: int):
-    """
-    Get the combined Reaction(s) count for a given Post
-    :param post_id: int Post.id
-    :return: List[Reply]
-    """
-    query = reactions.select().where(
-        reactions.c.post_id == post_id
-    )
-    return await database.fetch_one(query=query)
-
-
 @reactions_router.post("/add-to-post", response_model=Reaction)
 async def create_reaction(reaction: ReactionIn):
-    query = reactions.select().where(
-        reactions.c.post_id == reaction.post_id
+    query = posts.select().where(
+        posts.c.id == reaction.post_id
     )
     exiting = await database.fetch_one(query=query)
     reactions_obj = {
@@ -35,9 +22,10 @@ async def create_reaction(reaction: ReactionIn):
         reaction.reaction_type: exiting.reactions_obj[reaction.reaction_type] + 1
     }
 
-    query = reactions.insert().values(
-        post_id=reaction.post_id,
+    query = posts.update().values(
         reactions_obj=reactions_obj
+    ).where(
+        id=reaction.post_id
     )
     await database.execute(query=query)
     return {

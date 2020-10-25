@@ -4,7 +4,6 @@ from typing import List
 from fastapi import APIRouter
 
 from utils.database import database
-from apps.reactions.models import reactions
 from .models import posts
 from .schema import PostIn, Post
 from .animals import animals
@@ -16,12 +15,7 @@ posts_router = APIRouter()
 @posts_router.get("/", response_model=List[Post])
 async def list_posts():
     query = posts.select()
-    _posts = await database.fetch_all(query=query)
-    return [{
-        **x,
-        "reactions_obj": {},
-        "tags_list": []
-    } for x in _posts]
+    return await database.fetch_all(query=query)
 
 
 @posts_router.get("/{post_id}/", response_model=Post)
@@ -29,20 +23,7 @@ async def get_post(post_id: int):
     query = posts.select().where(
         posts.c.id == post_id
     )
-    post = await database.fetch_one(query=query)
-
-    query = reactions.select().where(
-        reactions.c.post_id == post_id
-    )
-    _reactions = await database.fetch_one(query=query)
-    reactions_obj = {}
-    if _reactions:
-        reactions_obj = _reactions.reactions_obj
-
-    return {
-        **post,
-        "reactions_obj": reactions_obj,
-    }
+    return await database.fetch_one(query=query)
 
 
 @posts_router.post("/", response_model=Post)

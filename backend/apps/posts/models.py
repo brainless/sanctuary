@@ -19,5 +19,10 @@ posts = Table(
     # This is JSON list/array containing all the selected tags
     Column("tags_list", JSON, nullable=False),
 
+    # This is a JSON object containing pairs of (reaction label, count)
+    # Reactions are clickable actions a user can take on a post like. These are preset
+    #  items that give a quick love/compassion action for the reader.
+    Column("reactions_obj", JSON, nullable=False),
+
     Column("created_at", DateTime, nullable=False, default=datetime.utcnow),
 )
