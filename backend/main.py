@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from utils.database import database
 from apps.posts.handlers import posts_router
 from apps.replies.handlers import replies_router
+from apps.reactions.handlers import reactions_router
 
 
 app = FastAPI()
@@ -30,4 +31,8 @@ app.include_router(
 app.include_router(
     replies_router,
     prefix="/replies"
+)
+app.include_router(
+    reactions_router,
+    prefix="/reactions"
 )

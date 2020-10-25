@@ -7,9 +7,9 @@ metadata = MetaData()
 
 
 class ReplyTypeChoices(str, PyEnum):
-    text = "TEXT"
-    voice = "VOICE"
-    gif = "GIF"
+    text = "text"
+    voice = "voice"
+    gif = "gif"
 
 
 replies = Table(

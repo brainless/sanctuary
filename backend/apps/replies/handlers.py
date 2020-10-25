@@ -11,7 +11,12 @@ replies_router = APIRouter()
 
 
 @replies_router.get("/list-for/{post_id}", response_model=List[Reply])
-async def list_posts(post_id: int):
+async def list_replies(post_id: int):
+    """
+    List Reply(ies) for a given Post
+    :param post_id: int Post.id
+    :return: List[Reply]
+    """
     query = replies.select().where(
         replies.c.post_id == post_id
     )
@@ -19,7 +24,7 @@ async def list_posts(post_id: int):
 
 
 @replies_router.post("/reply-to", response_model=Reply)
-async def create_post(reply: ReplyIn):
+async def create_reply(reply: ReplyIn):
     created_at = datetime.utcnow()
 
     query = replies.insert().values(

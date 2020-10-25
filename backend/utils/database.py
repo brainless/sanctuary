@@ -8,7 +8,7 @@ DATABASE_URL = "sqlite:///sanctuary.db"
 class Connection(sqlite3.Connection):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.execute('pragma foreign_keys=1')
+        self.execute("PRAGMA FOREIGN_KEYS=1")
 
 
 database = databases.Database(DATABASE_URL, factory=Connection)
