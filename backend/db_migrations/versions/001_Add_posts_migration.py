@@ -18,3 +18,13 @@ posts = Table(
 
     Column("created_at", DateTime, nullable=False, default=datetime.utcnow),
 )
+
+
+def upgrade(migrate_engine):
+    metadata.bind = migrate_engine
+    posts.create()
+
+
+def downgrade(migrate_engine):
+    metadata.bind = migrate_engine
+    posts.drop()
