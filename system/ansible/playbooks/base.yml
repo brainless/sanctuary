@@ -9,7 +9,7 @@
 
   vars:
     system_user: veda
-    system_packages: ["ufw"]
+    system_packages: ["ufw", "screen"]
 
   tasks:
     - name: Add the system user

@@ -36,3 +36,8 @@
       become: yes
       become_user: root
       apt: name={{ system_packages }} state=latest
+
+    - name: Install virtualenv with pip3
+      pip:
+        name: virtualenv
+        executable: /usr/bin/pip3
