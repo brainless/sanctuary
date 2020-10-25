@@ -38,6 +38,7 @@
         requirements: "{{ projects_root }}/{{ project_name }}/backend/requirements.txt"
         chdir: "{{ projects_root }}/{{ project_name }}/backend"
         virtualenv: "{{ projects_root }}/{{ project_name }}/backend/.venv"
+        virtualenv_command: "python3 -m virtualenv"
 
     - name: Copy nginx config files
       copy:

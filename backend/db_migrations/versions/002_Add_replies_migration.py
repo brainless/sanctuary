@@ -6,10 +6,10 @@ from sqlalchemy import MetaData, Table, Column, Integer, Text, Enum, DateTime, F
 metadata = MetaData()
 
 
-class ReplyTypeChoices(PyEnum):
-    text = "TEXT"
-    voice = "VOICE"
-    gif = "GIF"
+class ReplyTypeChoices(str, PyEnum):
+    text = "text"
+    voice = "voice"
+    gif = "gif"
 
 
 replies = Table(

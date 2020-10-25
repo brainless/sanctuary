@@ -2,8 +2,40 @@ import React, { Fragment, useEffect } from "react";
 import { useRouteMatch } from "react-router-dom";
 
 import { useData } from "services/store";
-import { Button } from "components/UIHelpers";
 import { PostSingleView } from "components/Post";
+import ReplyInListView from "components/Reply";
+import Reply from "./Reply";
+
+const ReplyList = ({}) => {
+  const match = useRouteMatch();
+  const { postId } = match.params;
+  const url = `/api/replies/list-for-post/${parseInt(postId)}/`;
+  const fetchData = useData((state) => state.fetchData);
+  const data = useData((state) => state[url]);
+  useEffect(() => {
+    if (!postId || !parseInt(postId)) {
+      return false;
+    }
+    fetchData(url);
+  }, []);
+
+  if (!data) {
+    return <Fragment>Loading</Fragment>;
+  }
+
+  return (
+    <Fragment>
+      {data.responsePayload.map((reply, i) => (
+        <ReplyInListView
+          key={`post-${postId}-re-${i}`}
+          id={reply.id}
+          content={reply.content}
+          createdAt={reply.created_at}
+        />
+      ))}
+    </Fragment>
+  );
+};
 
 export default ({ previewPayload = undefined }) => {
   const match = useRouteMatch();
@@ -39,16 +71,9 @@ export default ({ previewPayload = undefined }) => {
         hashTags={post.tags}
       />
 
-      <div className="container mt-4 mx-auto max-w-lg flex justify-center">
-        <Button
-          element="link"
-          size="lg"
-          padding="px-6"
-          attributes={{ to: "/wall" }}
-        >
-          Share your support
-        </Button>
-      </div>
+      <ReplyList />
+
+      <Reply />
     </Fragment>
   );
 };
