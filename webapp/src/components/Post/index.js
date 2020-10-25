@@ -10,7 +10,7 @@ export const PostInListView = ({ id, title, content, hashTags }) => {
 
       <Post
         inBox={false}
-        headingSize="3"
+        headingSize="2"
         inContainer={false}
         title={title}
         titleLink={`/posts/${id}/${slugify(title, { lower: true })}/`}
@@ -37,10 +37,10 @@ export const PostInListView = ({ id, title, content, hashTags }) => {
 export const PostSingleView = ({ id, title, content, hashTags }) => {
   return (
     <Fragment>
-      <div className="container mx-auto mt-2 px-3 py-1 max-w-xl bg-white">
+      <div className="container mx-auto mt-2 px-3 py-1 max-w-xl">
         <div className="text-xs mt-2">Posted 20 hours ago</div>
 
-        <Post inBox={false} headingSize="2" inContainer={false} title={title} />
+        <Post inBox={false} headingSize="1" inContainer={false} title={title} />
       </div>
 
       <div className="container mx-auto my-2 px-3 py-3 max-w-xl bg-white rounded-md">

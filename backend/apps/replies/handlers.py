@@ -4,7 +4,7 @@ from fastapi import APIRouter
 
 from utils.database import database
 from .models import replies
-from .schema import ReplyIn, Reply
+from .schema import ReplyIn, Reply, LikeIn, Like
 
 
 replies_router = APIRouter()
@@ -38,4 +38,24 @@ async def create_reply(reply: ReplyIn):
         **reply.dict(),
         "id": last_record_id,
         "created_at": created_at
+    }
+
+
+@replies_router.post("/add-like/", response_model=Like)
+async def add_like(like: LikeIn):
+    query = replies.select().where(
+        replies.c.id == like.reply_id
+    )
+    exiting = await database.fetch_one(query=query)
+    likes_count = 1 if exiting.likes_count is None else exiting.likes_count + 1
+
+    query = replies.update().values(
+        likes_count=likes_count
+    ).where(
+        replies.c.id == like.reply_id
+    )
+    await database.execute(query=query)
+    return {
+        **like.dict(),
+        "likes_count": likes_count
     }
