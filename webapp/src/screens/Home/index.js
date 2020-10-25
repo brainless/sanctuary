@@ -2,77 +2,47 @@ import React, { Fragment } from "react";
 
 import { Button, Post } from "components/UIHelpers";
 
-const homePageIntroContent = `
-# veda
-
-A sacred and safe place for people who are in mentally stressful situations - living with psychological conditions like anxiety, depression, paranoia, stress disorder, attention issues or any other.
-
-
-## Rules of veda
-Simple rules guide the veda:
-
- - Share only what you are going through, not what you feel about someone else
- - Reply to someone's post only if you have something positive or supportive, anything else will be flagged and removed
- - Posts/replies are always anonymous - we do not track the author of the content at all
- - You have to login with an email only as a spam prevention mechanism
- - Optionally, you can get a link to any post you create so you can come back later, but the site still does not track you
- - Professional counselors may join and help, only if they declare themselves as such
- - Rules guiding the system, except the ones about anonymity, can be decided by the community
-
-All software behind Veda will be open source, [maintained on GitHub](https://github.com/brainless/veda). Infrastructure will be run by donations from hosting companies. Veda will be completely free to join and use.
-`;
-
 export default ({}) => {
   return (
     <Fragment>
       <Post>
         <Fragment>
-          <h1>Veda</h1>
+          <h1>Welcome to Veda</h1>
           <p>
-            A sacred and safe place for people who are in mentally stressful
-            situations - living with psychological conditions like anxiety,
-            depression, paranoia, stress disorder, attention issues or any
-            other.
+            Let’s face it. Covid-19 has put many of us in vulnerable positions.
+            We’re more isolated, disconnected, and lonely than ever before. Veda
+            is a safe and social space for us to talk about how we feel and come
+            together for support.
           </p>
-          <h2 id="rules-of-veda">Rules of Veda</h2>
-          <p>Simple rules guide the veda:</p>
-          <ul>
-            <li>
-              Share only what you are going through, not what you feel about
-              someone else
-            </li>
-            <li>
-              Reply to someone&#39;s post only if you have something positive or
-              supportive, anything else will be flagged and removed
-            </li>
-            <li>
-              Posts/replies are always anonymous - we do not track the author of
-              the content at all
-            </li>
-            <li>
-              You have to login with an email only as a spam prevention
-              mechanism
-            </li>
-            <li>
-              Optionally, you can get a link to any post you create so you can
-              come back later, but the site still does not track you
-            </li>
-            <li>
-              Professional counselors may join and help, only if they declare
-              themselves as such
-            </li>
-            <li>
-              Rules guiding the system, except the ones about anonymity, can be
-              decided by the community
-            </li>
-          </ul>
+          <h2 id="rules-of-veda">At Veda, we are:</h2>
+
+          <h3 className="uppercase">Social first</h3>
           <p>
-            All software behind Veda is open source, and{" "}
-            <a href="https://github.com/brainless/sanctuary">
-              maintained on GitHub
-            </a>
-            . Infrastructure is run by donations. Veda is completely free to
-            join and use.
+            That means we are here to share ideas, and explore together what
+            it’s like to live in the post-Covid world. Veda is a tool to combat
+            loneliness and social isolation with a way to connect with one
+            another virtually.
+          </p>
+
+          <h3 className="uppercase">Kind always</h3>
+          <p>
+            There are plenty of places for trolling and tearing people down
+            online. This isn’t one of them. We’re here to help you find
+            conversation to feel human connection, or support when you need it
+            most. And we always do that with the golden rule in mind.
+          </p>
+
+          <h3 className="uppercase">100% supportive</h3>
+          <p>
+            We’re here for the good, the bad, and the good, the bad, and the
+            ‘oh-my-god when will 2020 be over.’ We’re here for it all, but most
+            of all, we’re here for YOU.
+          </p>
+
+          <p>
+            Veda is{" "}
+            <a href="https://github.com/brainless/sanctuary">open source</a> and
+            runs on donations. It is completely free to join and use.
           </p>
         </Fragment>
       </Post>

@@ -35,7 +35,7 @@ body {
   }
 
   h3 {
-    @apply block text-xl leading-7 text-gray-800 pt-2 pb-1;
+    @apply block text-xl leading-5 text-gray-800 pt-2 pb-1;
     font-family: "Merriweather", serif;
   }
   h3 a.h-link {
@@ -44,7 +44,7 @@ body {
   }
 
   h4 {
-    @apply block font-semibold text-lg leading-7 text-gray-800 pt-2 pb-1;
+    @apply block font-semibold text-lg leading-4 text-gray-800 pt-2 pb-1;
   }
   h4 a.h-link {
     @apply font-semibold text-blue-800;
