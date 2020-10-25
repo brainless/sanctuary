@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import ReactMarkdown from "react-markdown";
 
 export const Heading = ({ x = "3", children }) => {
   return React.createElement(`h${x}`, {}, children);
@@ -12,7 +11,6 @@ export const Post = ({
   inBox = true,
   headingSize = "2",
   inContainer = true,
-  isMarkdown,
   children,
 }) => {
   const boxClasses = "bg-white border rounded-md p-2";
@@ -35,11 +33,7 @@ export const Post = ({
   const Inner = () => (
     <div className={inBox ? boxClasses : ""}>
       <Title />
-      {isMarkdown ? (
-        <ReactMarkdown>{children}</ReactMarkdown>
-      ) : (
-        <Fragment>{children}</Fragment>
-      )}
+      {children}
     </div>
   );
 
@@ -112,20 +106,20 @@ export const Button = ({
   }
 };
 
-export const HashTag = ({ id, label, slug, isLink = false }) => {
+export const HashTag = ({ slug, isLink = false }) => {
   const commonClasses =
     "inline-block text-green-700 text-sm font-thin bg-gray-200 px-2 rounded shadow-sm mx-1";
 
   if (isLink) {
     return (
       <Link
-        to={`/tag/${id}/${slug}`}
+        to={`/tag/${slug}`}
         className={`${commonClasses} hover:bg-gray-600 hover:text-white`}
       >
-        #{label}
+        #{slug}
       </Link>
     );
   } else {
-    return <span className={commonClasses}>#{label}</span>;
+    return <span className={commonClasses}>#{slug}</span>;
   }
 };
