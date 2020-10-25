@@ -35,6 +35,8 @@ async def create_post(post: PostIn):
         title=post.title,
         content=post.content,
         animal_label=animal_label,
+        tags_list=post.tags_list,
+        reactions_obj={},
         created_at=created_at
     )
     last_record_id = await database.execute(query=query)

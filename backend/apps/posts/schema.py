@@ -1,4 +1,4 @@
-from typing import Dict, List, Optional
+from typing import Dict, List
 from datetime import datetime
 from pydantic import BaseModel
 
@@ -6,7 +6,7 @@ from pydantic import BaseModel
 class PostIn(BaseModel):
     title: str
     content: str
-    tags_list: Optional[List[str]]
+    tags_list: List[str]
 
 
 class Post(BaseModel):
