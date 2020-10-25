@@ -4,6 +4,7 @@ from typing import List
 from fastapi import APIRouter
 
 from utils.database import database
+from apps.reactions.models import reactions
 from .models import posts
 from .schema import PostIn, Post
 from .animals import animals
@@ -12,13 +13,39 @@ from .animals import animals
 posts_router = APIRouter()
 
 
-@posts_router.get("/list", response_model=List[Post])
+@posts_router.get("/", response_model=List[Post])
 async def list_posts():
     query = posts.select()
-    return await database.fetch_all(query=query)
+    _posts = await database.fetch_all(query=query)
+    return [{
+        **x,
+        "reactions_obj": {},
+        "tags_list": []
+    } for x in _posts]
 
 
-@posts_router.post("/create", response_model=Post)
+@posts_router.get("/{post_id}/", response_model=Post)
+async def get_post(post_id: int):
+    query = posts.select().where(
+        posts.c.id == post_id
+    )
+    post = await database.fetch_one(query=query)
+
+    query = reactions.select().where(
+        reactions.c.post_id == post_id
+    )
+    _reactions = await database.fetch_one(query=query)
+    reactions_obj = {}
+    if _reactions:
+        reactions_obj = _reactions.reactions_obj
+
+    return {
+        **post,
+        "reactions_obj": reactions_obj,
+    }
+
+
+@posts_router.post("/", response_model=Post)
 async def create_post(post: PostIn):
     animal_label = choice(list(animals.keys()))
     created_at = datetime.utcnow()
@@ -34,5 +61,6 @@ async def create_post(post: PostIn):
         **post.dict(),
         "id": last_record_id,
         "animal_label": animal_label,
-        "created_at": created_at
+        "created_at": created_at,
+        "reactions_obj": {}
     }

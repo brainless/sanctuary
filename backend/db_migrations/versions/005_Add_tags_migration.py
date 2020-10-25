@@ -16,5 +16,16 @@ tags = Table(
     Column("post_id", Integer, ForeignKey("posts.id"), nullable=False),
 
     # This is JSON list/array containing all the selected tags
-    Column("tags", JSON, nullable=False),
+    Column("tags_list", JSON, nullable=False),
 )
+
+
+def upgrade(migrate_engine):
+    metadata.bind = migrate_engine
+    _posts = Table("posts", metadata, autoload=True)
+    tags.create()
+
+
+def downgrade(migrate_engine):
+    metadata.bind = migrate_engine
+    tags.drop()

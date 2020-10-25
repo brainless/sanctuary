@@ -27,20 +27,20 @@ async def create_reaction(reaction: ReactionIn):
         reactions.c.post_id == reaction.post_id
     )
     exiting = await database.fetch_one(query=query)
-    reactions_json = {
-        **exiting.reactions_json,
+    reactions_obj = {
+        **exiting.reactions_obj,
         reaction.reaction_type: 1
-    } if reaction.reaction_type not in exiting.reactions_json.keys() else {
-        **exiting.reactions_json,
-        reaction.reaction_type: exiting.reactions_json[reaction.reaction_type] + 1
+    } if reaction.reaction_type not in exiting.reactions_obj.keys() else {
+        **exiting.reactions_obj,
+        reaction.reaction_type: exiting.reactions_obj[reaction.reaction_type] + 1
     }
 
     query = reactions.insert().values(
         post_id=reaction.post_id,
-        reactions_json=reactions_json
+        reactions_obj=reactions_obj
     )
     await database.execute(query=query)
     return {
         **reaction.dict(),
-        "reactions_json": reactions_json
+        "reactions_obj": reactions_obj
     }
