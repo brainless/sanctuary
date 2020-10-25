@@ -6,7 +6,7 @@ from sqlalchemy import MetaData, Table, Column, Integer, Text, Enum, DateTime, F
 metadata = MetaData()
 
 
-class ReplyTypeChoices(str, PyEnum):
+class ReplyTypeChoices(PyEnum):
     text = "TEXT"
     voice = "VOICE"
     gif = "GIF"
@@ -30,3 +30,14 @@ replies = Table(
 
     Column("created_at", DateTime, nullable=False, default=datetime.utcnow()),
 )
+
+
+def upgrade(migrate_engine):
+    metadata.bind = migrate_engine
+    _posts = Table("posts", metadata, autoload=True)
+    replies.create()
+
+
+def downgrade(migrate_engine):
+    metadata.bind = migrate_engine
+    replies.drop()

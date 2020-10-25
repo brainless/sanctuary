@@ -2,6 +2,7 @@ from fastapi import FastAPI
 
 from utils.database import database
 from apps.posts.handlers import posts_router
+from apps.replies.handlers import replies_router
 
 
 app = FastAPI()
@@ -25,4 +26,8 @@ async def api_home():
 app.include_router(
     posts_router,
     prefix="/posts"
+)
+app.include_router(
+    replies_router,
+    prefix="/replies"
 )
