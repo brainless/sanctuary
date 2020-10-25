@@ -23,7 +23,7 @@ function App() {
             <Wall />
           </Route>
 
-          <Route path="/post/">
+          <Route path="/posts/">
             <Post />
           </Route>
 

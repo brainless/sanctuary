@@ -12,13 +12,21 @@ from .animals import animals
 posts_router = APIRouter()
 
 
-@posts_router.get("/list", response_model=List[Post])
+@posts_router.get("/", response_model=List[Post])
 async def list_posts():
     query = posts.select()
     return await database.fetch_all(query=query)
 
 
-@posts_router.post("/create", response_model=Post)
+@posts_router.get("/{post_id}/", response_model=Post)
+async def get_post(post_id: int):
+    query = posts.select().where(
+        posts.c.id == post_id
+    )
+    return await database.fetch_one(query=query)
+
+
+@posts_router.post("/", response_model=Post)
 async def create_post(post: PostIn):
     animal_label = choice(list(animals.keys()))
     created_at = datetime.utcnow()
@@ -27,6 +35,8 @@ async def create_post(post: PostIn):
         title=post.title,
         content=post.content,
         animal_label=animal_label,
+        tags_list=post.tags_list,
+        reactions_obj={},
         created_at=created_at
     )
     last_record_id = await database.execute(query=query)
@@ -34,5 +44,6 @@ async def create_post(post: PostIn):
         **post.dict(),
         "id": last_record_id,
         "animal_label": animal_label,
-        "created_at": created_at
+        "created_at": created_at,
+        "reactions_obj": {}
     }

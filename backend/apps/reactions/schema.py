@@ -11,4 +11,4 @@ class ReactionIn(BaseModel):
 
 class Reaction(BaseModel):
     post_id: int
-    reactions_json: Dict
+    reactions_obj: Dict

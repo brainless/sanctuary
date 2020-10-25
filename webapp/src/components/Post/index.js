@@ -13,7 +13,7 @@ export const PostInListView = ({ id, title, content, hashTags }) => {
         headingSize="3"
         inContainer={false}
         title={title}
-        titleLink={`/post/${id}/${slugify(title, { lower: true })}/`}
+        titleLink={`/posts/${id}/${slugify(title, { lower: true })}/`}
       >
         {content}
       </Post>
@@ -51,14 +51,7 @@ export const PostSingleView = ({ id, title, content, hashTags }) => {
         {hashTags && hashTags.length ? (
           <div className="mt-2 mb-2">
             {hashTags.map((tag, i) => {
-              const temp = {
-                id: i,
-                label: tag,
-                slug: tag,
-              };
-              return (
-                <HashTag key={`post-${id}-tag-${i}`} id={i} isLink {...temp} />
-              );
+              return <HashTag key={`post-${id}-tag-${i}`} isLink slug={tag} />;
             })}
           </div>
         ) : null}
